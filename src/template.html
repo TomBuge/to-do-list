@@ -3,14 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link href="https://fonts.googleapis.com/css2?family=Handlee&display=swap" rel="stylesheet">
     <title>Document</title>
 </head>
 <body>
     <div class="header">
         <nav class="nav">
-            <button id="home">HOME</button>
-            <button id  ="menu">MENU</button>
-            <button id="about">ABOUT</button>
+            <div class="burger-menu"><span class="material-symbols-outlined burger-icon">menu</span></div>
+            <div class="title">
+                <h1>TODO App</h1>
+                <h2 id="currentProject"></h2>
+            </div>
+            <div class="new-task-button">
+                <span class="material-symbols-outlined">Add</span>
+                <span>New Task</span>
+            </div>
+            
         </nav>
     </div>
     <div id="content">
