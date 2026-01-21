@@ -1,0 +1,148 @@
+@font-face {
+    font-family: 'Glamore';
+    src: url('./assets/fonts/Glamore.otf') format('opentype'),
+         url('./assets/fonts/Glamore.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.title {
+    font-family: 'Glamore', serif;
+    font-size: 5rem;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+}
+
+.about-container .title {
+    font-size: 1rem;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode';
+    text-shadow: none;
+    
+}
+
+.about-container .card div {
+    text-align: start;
+}
+
+nav button:hover {
+    transform: translate(-1px, -1px);
+}
+
+#content {
+    margin: 0 2rem 10rem;
+
+}
+
+nav button {
+     box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    
+}
+
+.sub-title {
+    font-family: 'Glamore', serif;
+    font-size: 2rem;
+     text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+}
+
+.hero-section {
+    height: 80vh;
+    background-image: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)),
+                      url(./assets/images/the-rock-sitting.webp);
+    background-size: cover;
+    background-position: center;   
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+
+}
+
+.content-section {
+    display: flex;
+    justify-content: center;
+
+}
+
+.description-content {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    padding: 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    line-height: 1.5;
+
+}
+
+.starters,
+.main,
+.dessert {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 3rem;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-rows: 1fr 1fr;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.menu-title {
+    padding: 2rem;
+    text-align: center;
+    font-size: 2rem;
+    font-family: 'Glamore', serif;
+    flex: 0 0 100%;
+}
+
+nav {
+
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    align-items: center;
+    padding: 2rem;
+}
+
+nav button {
+    background-color: white;
+    padding: 10px 20px;
+    border-radius: 6px;
+}
+
+.about-container .card {
+    max-width: 100%;
+    border: none;
+    box-shadow: none;
+    align-items:start;
+    margin: 2rem;
+}
+
+.card {
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 16px;
+    height: 100%;
+    flex: 0 1 300px;
+    max-width: 48%;
+    border-radius: 8px;
+    box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 0.1);  
+}
+
+
+
+.card div {
+    text-align: center;
+}
+
+.card :first-child {
+    font-weight: bold;
+}
+
+
+
+
