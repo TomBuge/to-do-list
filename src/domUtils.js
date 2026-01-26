@@ -8,25 +8,20 @@ export const makeElement = (element, className, text = "", id) => {
 
  export const addModalListeners = (overlay) => {
     const button = overlay.querySelector('#modal-close'); 
-    const form = overlay.querySelector('.modal-form');
+    
 
-    const destroy  = () => {
-        overlay.remove()
+    const hide  = () => {
+        overlay.classList.add('hidden');
     }
     
     if (button) {
-        button.addEventListener('click', destroy);
+        button.addEventListener('click', hide);
     }
     
 
     overlay.addEventListener('click', (e) => {
-        if (e.target === overlay) destroy();
+        if (e.target === overlay) hide();
     });
 
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        console.log("New task Created!");
-        destroy();
-    });
     
 }   

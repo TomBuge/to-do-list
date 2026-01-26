@@ -3,8 +3,23 @@ import loadSideBar from './sideBar';
 import newTaskModal from './newTaskModal';
 import newProjectModal from './newProjectModal';
 import editProjectModal from './editProjectModal';
+import { setupUI, toggles } from './ui';
+import { Store } from './store'
+
+export const store = new Store();
+window.store = store;
+
+loadSideBar();
+editProjectModal();
+toggles.toggleEditProjectModal();
+toggles.toggleSideBar();
+
+setupUI(store);
+console.log(store.loadFromStorage());
 
 const nav = document.querySelector('.nav');
+
+
 
 nav.addEventListener('click', (e) => {   
 
@@ -33,4 +48,6 @@ nav.addEventListener('click', (e) => {
         console.log("task button pressed") ;
     }
 });
+
+
 

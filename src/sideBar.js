@@ -35,12 +35,17 @@ const loadSideBar = () => {
     const calendarText = makeElement('div', 'today-text', 'Calendar');
     const calendarCount = makeElement('div', 'count', '5', 'calendar-count');
     calendarButton.append(calendarIcon, calendarText, calendarCount);
+
+    const myProjectsContainer = makeElement('div', 'sidebar-nav', "", 'my-projects-container');
+    const myProjects = makeElement('div', 'my-projects-heading', 'My Projects' )
+    const myProjectsList = makeElement('ul', 'my-projects-list')
+    myProjectsContainer.append(myProjects, myProjectsList);
+
     
-    sidebar.append(editProjectButton, addProjectButton, todayButton, calendarButton)
+    sidebar.append(editProjectButton, addProjectButton, todayButton, calendarButton, myProjectsContainer)
     
 
 
-    menuIcon.textContent = "close";
     }
     
     else {

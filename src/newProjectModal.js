@@ -1,8 +1,9 @@
 import { makeElement, addModalListeners } from "./domUtils";
+import { store } from "./index"
 
 const newProjectModal = () => {
 
-    const overlay = makeElement('div', 'modal-overlay');
+    const overlay = makeElement('div', 'modal-overlay', "", 'new-project-modal');
     const modal = makeElement('div', 'modal-content'); 
 
     const closeIcon = makeElement('span', "material-symbols-outlined", 'close', 'modal-close');
@@ -18,6 +19,13 @@ const newProjectModal = () => {
     overlay.appendChild(modal);
 
     addModalListeners(overlay);
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        console.log("New project created!");
+        store.addProject(projectName.value);
+        overlay.remove();
+    });
 
     document.body.appendChild(overlay);
 

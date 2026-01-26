@@ -8,6 +8,10 @@ html {
     margin: 0px;
 }
 
+h1 {
+    margin: 0;
+}
+
 
 body {
     width: 100%;
@@ -20,8 +24,17 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 1rem;
+    padding: 1rem 1rem;
     border-bottom: 2px solid rgba(0, 78, 100, 0.1);
+}
+
+#currentProject {
+    margin: 0;
+}
+
+.title {
+    display: flex;
+    flex-direction: column;
 }
 
 .menu-icon {
@@ -201,3 +214,32 @@ body {
     font-weight: bold;
     font-size: 2rem;
 }
+
+#my-projects-container {
+    
+    padding-left: 22px;
+   
+}
+
+.my-projects-heading {
+    font-weight: 800;
+    font-size: 1.2rem;
+}
+
+#my-projects-container {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 1rem;
+}
+
+.my-projects-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.project-list-item {
+    padding: 6px 0;
+}
+
