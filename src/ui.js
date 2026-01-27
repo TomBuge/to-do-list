@@ -1,4 +1,5 @@
 import { makeElement } from "./domUtils";
+import { displayTasks } from "./displayTasks";
 
 export function setupUI(store) {
 
@@ -10,13 +11,20 @@ export function setupUI(store) {
         const subheading = document.querySelector('.currentProject');
         const sidebarHeading = document.querySelector('.current-project-text');
         const editProjectModalHeading = document.getElementById('edit-project-heading');
-        
+        const newTaskModalHeading = document.getElementById('new-task-heading');
+
             subheading.textContent = currentProject.name;
             subheading.id = currentProject.id;
             sidebarHeading.textContent = currentProject.name;
+        
             if (editProjectModalHeading) {
-                 editProjectModalHeading.textContent = currentProject.name;
+                editProjectModalHeading.textContent = currentProject.name;
             }
+
+            if (newTaskModalHeading) {
+                newTaskModalHeading.textContent = currentProject.name;
+            }
+            
     }
 
     const updateSidebarProjectList = () => {
@@ -43,11 +51,14 @@ export function setupUI(store) {
     }
 
 
+    store.subscribe(displayTasks);
     store.subscribe(updateCurrentProject);
     store.subscribe(updateSidebarProjectList);
-
+    
+    displayTasks();
     updateCurrentProject();
     updateSidebarProjectList();
+    
 }
 
 export const toggles = {
@@ -60,6 +71,11 @@ export const toggles = {
     toggleEditProjectModal () {
         const editProjectModal = document.getElementById('edit-project-modal');
         editProjectModal.classList.toggle('hidden');
+    },
+
+    toggleNewTaskModal () {
+        const newTaskModal = document.getElementById('new-task-modal');
+        newTaskModal.classList.toggle('hidden');
     }
 
 }

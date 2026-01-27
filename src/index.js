@@ -5,14 +5,19 @@ import newProjectModal from './newProjectModal';
 import editProjectModal from './editProjectModal';
 import { setupUI, toggles } from './ui';
 import { Store } from './store'
+import { displayTasks } from './displayTasks';
 
 export const store = new Store();
 window.store = store;
 
 loadSideBar();
 editProjectModal();
+newTaskModal();
+
+
 toggles.toggleEditProjectModal();
 toggles.toggleSideBar();
+toggles.toggleNewTaskModal();
 
 setupUI(store);
 console.log(store.loadFromStorage());

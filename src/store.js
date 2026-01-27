@@ -1,5 +1,6 @@
 import { Project } from './project.js';
 import { Task } from './task.js';
+import { format, parseISO } from 'date-fns';
 
 export class Store {
 
@@ -16,9 +17,17 @@ export class Store {
     }
 
     loadFromStorage() {
-        const saved = localStorage.getItem('data');
+        let saved = localStorage.getItem('data');
         if(saved) {
-            return JSON.parse(saved);
+            saved = JSON.parse(saved);
+            saved.forEach(project => {
+                project.tasks.forEach(task => {
+                    if (task.date) {
+                        task.date = format(parseISO(task.date), "MMM dd");
+                    }   
+                });
+            });
+            return saved;
         }
         const defaultProject = new Project("Default Project");
         defaultProject.id = 1;
@@ -62,6 +71,16 @@ export class Store {
             this.addProject("Default Project");
         }
         console.log(this.#projects);
+        this.saveToStorage();
+        this.notify();
+    }
+
+    addTask(name, description, priority, date) {
+        const isoDate = new Date(date).toISOString();
+        const newTask = new Task(name, description, priority, isoDate);
+        const currentProject = this.getCurrentProject();
+        currentProject.tasks.push(newTask);
+        console.log(this.getProjects());
         this.saveToStorage();
         this.notify();
     }

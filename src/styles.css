@@ -1,5 +1,6 @@
 * {
- font-family: 'Handlee';   
+ font-family: 'Handlee';  
+ box-sizing: border-box;
 }
 
 html {
@@ -26,7 +27,10 @@ body {
     align-items: center;
     padding: 1rem 1rem;
     border-bottom: 2px solid rgba(0, 78, 100, 0.1);
+    gap: 2rem;
 }
+
+
 
 #currentProject {
     margin: 0;
@@ -56,6 +60,9 @@ body {
     cursor: pointer;      
 }
 
+#content {
+    display: flex;
+}
 .sidebar {
     height: 100%;
     border-right: 2px solid rgba(0, 78, 100, 0.1);
@@ -170,9 +177,9 @@ body {
     transition: transform 0.2s;
 }
 
-#flag-red { color: #ff0000; }
-#flag-orange { color: #ffa500; }
-#flag-green { color: #008000; }
+.flag-red, .high { color: #ff0000; }
+.flag-orange, .medium { color: #ffa500; }
+.flag-green, .low { color: #008000; }
 
 .submit-btn, 
 .delete-btn {
@@ -243,3 +250,46 @@ body {
     padding: 6px 0;
 }
 
+.task-card {
+    display: flex; 
+    gap: 1rem; 
+    flex-wrap: wrap;
+    max-width: 900px;
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid #004e64;
+    align-items: center;
+}
+
+.display-container {
+    height: 100%;
+    width: 80%;
+    display: flex; 
+    flex-direction: column; 
+    gap: 1rem;
+    padding: 1rem 2rem;
+    margin-left: auto;
+    align-items: center;
+    
+}
+
+.title-container { 
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    max-width: 900px;
+    width: 100%;
+    
+}
+
+.app-title {
+    margin-right: auto;
+}
+
+.task-card div:last-of-type {
+    margin-left: auto;
+}
+
+.task-title {
+    font-weight: bold;
+}
