@@ -1,6 +1,7 @@
 import { store } from './index'
 import { makeElement } from './domUtils';
 import { format, parseISO } from 'date-fns';
+import { editTaskModal } from './editTaskModal';
 
 export const displayTasks = () => {
     const currentProject = store.getCurrentProject(); 
@@ -12,7 +13,7 @@ export const displayTasks = () => {
     display.appendChild(titleContainer);
 
     currentProject.tasks.forEach(task => {
-        const taskCard = makeElement('div', 'task-card');
+        const taskCard = makeElement('div', 'task-card', '', task.id);
         const textContainer = makeElement('div', 'task-text-container');
         const checkbox = makeElement('input', 'task-complete');
         checkbox.type = 'checkbox';
@@ -21,13 +22,23 @@ export const displayTasks = () => {
         const priority = makeElement('span', 'material-symbols-outlined', 'flag');
         priority.classList.add(task.priority);
         const date = makeElement('div', 'task-date');
+        const deleteIcon = makeElement('span', 'material-symbols-outlined', 'delete', 'delete-icon')
+        const editIcon = makeElement('span', 'material-symbols-outlined', 'edit', 'edit-task-icon')
 
-        title.textContent = task.title;
+        title.textContent = task.name;
         description.textContent = task.description;
         date.textContent = format(parseISO(task.date), "MMM dd");
         textContainer.append(title, description);
-        taskCard.append(checkbox, textContainer, date, priority);
+        taskCard.append(checkbox, textContainer, date, priority, editIcon, deleteIcon);
         display.appendChild(taskCard);
+
+        deleteIcon.addEventListener('click', () => {
+            store.deleteTask(task.id);
+        });
+
+        editIcon.addEventListener('click', () => {
+            editTaskModal(task.id);
+        });
 
     })
     

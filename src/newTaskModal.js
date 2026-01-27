@@ -1,4 +1,4 @@
-import { makeElement, addModalListeners } from "./domUtils"
+import { makeElement, addModalListeners, clearForm } from "./domUtils"
 import { store } from "./index" 
 
 
@@ -7,6 +7,8 @@ const newTaskModal = () => {
     let modalExists = document.getElementById('new-task-modal');
 
     if (!modalExists) {
+
+
         const overlay = makeElement('div', 'modal-overlay', '', 'new-task-modal');
         const modal = makeElement('div', 'modal-content');
         const closeButton = makeElement('span', 'material-symbols-outlined', 'close', 'modal-close');

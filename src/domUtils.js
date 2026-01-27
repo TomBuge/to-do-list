@@ -23,5 +23,11 @@ export const makeElement = (element, className, text = "", id) => {
         if (e.target === overlay) hide();
     });
 
-    
-}   
+}
+
+export const clearForm = () => {
+        nameInput.value = '';
+        descInput.value = '';
+        dateInput.value = '';
+        prioritySelect.value = '';
+    }

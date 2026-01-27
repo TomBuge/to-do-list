@@ -19,18 +19,14 @@ export class Store {
     loadFromStorage() {
         let saved = localStorage.getItem('data');
         if(saved) {
-            saved = JSON.parse(saved);
-            saved.forEach(project => {
-                project.tasks.forEach(task => {
-                    if (task.date) {
-                        task.date = format(parseISO(task.date), "MMM dd");
-                    }   
-                });
-            });
-            return saved;
+          return JSON.parse(saved);
         }
-        const defaultProject = new Project("Default Project");
+        const defaultProject = new Project("Example Project");
         defaultProject.id = 1;
+        defaultProject.tasks = [
+            new Task('Get a haircut', 'Mullets are out of fashion!', 'high', '2026-01-31T00:00:00.000Z'),
+            new Task('Go Shopping', 'pick up provisions for part on the weekend!', 'medium', '2026-02-07T00:00:00.000Z'),            
+        ]
         return [defaultProject];
     }
 
@@ -75,12 +71,45 @@ export class Store {
         this.notify();
     }
 
+    editProjectName (newName) {
+        const currentProject = this.getCurrentProject();
+        currentProject.name = newName;
+        this.saveToStorage();
+        this.notify();
+
+    }
+
     addTask(name, description, priority, date) {
         const isoDate = new Date(date).toISOString();
         const newTask = new Task(name, description, priority, isoDate);
         const currentProject = this.getCurrentProject();
         currentProject.tasks.push(newTask);
         console.log(this.getProjects());
+        this.saveToStorage();
+        this.notify();
+    }
+
+    deleteTask(id) {
+        console.log("delete task!");
+        const currentProject = this.getCurrentProject();
+        currentProject.tasks = currentProject.tasks.filter(task => task.id !== id);
+        this.saveToStorage();
+        this.notify(); 
+    }
+
+    getTask(id) {
+        const currentProject = this.getCurrentProject();
+        return currentProject.tasks.find(task => task.id === id)
+    }
+
+    editTask(id, name, description, priority, date) {
+        const currentProject = this.getCurrentProject();
+        const task = currentProject.tasks.find(task => task.id === id);
+        const isoDate = new Date(date).toISOString();
+        task.name = name;
+        task.description = description;
+        task.priority = priority;
+        task.date = isoDate;
         this.saveToStorage();
         this.notify();
     }

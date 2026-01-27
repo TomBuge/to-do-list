@@ -108,8 +108,11 @@ body {
 
 .sidebar-nav:hover,
 #menu:hover,
-#new-task-button:hover {
+#new-task-button:hover,
+#delete-icon:hover,
+#edit-task-icon:hover {
     filter: brightness(1.6);
+    cursor: pointer;
 }
 
 
@@ -181,8 +184,13 @@ body {
 .flag-orange, .medium { color: #ffa500; }
 .flag-green, .low { color: #008000; }
 
-.submit-btn, 
-.delete-btn {
+.high, .medium, .low {
+    font-variation-settings: 'FILL' 1;
+}
+
+.edit-btn, 
+.delete-btn,
+.submit-btn {
     padding: 0.8rem;
     background-color: #004e64;
     color: white;
@@ -259,6 +267,7 @@ body {
     padding: 1rem;
     border: 1px solid #004e64;
     align-items: center;
+    border-radius: 12px;
 }
 
 .display-container {
@@ -293,3 +302,19 @@ body {
 .task-title {
     font-weight: bold;
 }
+
+.task-complete:checked + .task-text-container {
+    text-decoration: line-through;
+    opacity: 0.5;
+}
+
+.task-complete:checked ~ #delete-icon {
+    display: block;
+    cursor: pointer;
+}
+
+#delete-icon {
+    display: none;
+    
+}
+

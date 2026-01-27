@@ -28,6 +28,7 @@ const loadSideBar = () => {
     const todayText = makeElement('div', 'today-text', 'Today');
     const todayCount = makeElement('div', 'count', '4', 'today-count');
     todayButton.append(todayIcon, todayText, todayCount);
+    todayButton.classList.add('hidden');
     
 
     const calendarButton = makeElement('div', 'sidebar-nav')
@@ -35,6 +36,7 @@ const loadSideBar = () => {
     const calendarText = makeElement('div', 'today-text', 'Calendar');
     const calendarCount = makeElement('div', 'count', '5', 'calendar-count');
     calendarButton.append(calendarIcon, calendarText, calendarCount);
+    calendarButton.classList.add('hidden');
 
     const myProjectsContainer = makeElement('div', 'sidebar-nav', "", 'my-projects-container');
     const myProjects = makeElement('div', 'my-projects-heading', 'My Projects' )

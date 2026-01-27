@@ -16,7 +16,7 @@ const editProjectModal = () => {
         const projectName = makeElement('input', 'form-input');
         projectName.placeholder = "Edit Project Name";
         const btnContainer = makeElement('div', 'btn-container');
-        const submitButton = makeElement('button', 'submit-btn', 'Edit Name');
+        const submitButton = makeElement('button', 'edit-btn', 'Edit Name');
         const deleteButton = makeElement('button', 'delete-btn', 'Delete Project');
         btnContainer.append(deleteButton, submitButton);
         form.append(projectName, btnContainer);
@@ -33,8 +33,15 @@ const editProjectModal = () => {
             const currentProjectId = document.querySelector('.currentProject').id;
             console.log(`current project id is ${currentProjectId}`);
             store.deleteProject(Number(currentProjectId));
-            overlay.classList.add('hidden');   
+             overlay.classList.add('hidden');   
         });     
+
+        const editBtn = form.querySelector('.edit-btn');
+        editBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            store.editProjectName(projectName.value);
+            overlay.classList.add('hidden');
+        });
     };
 
     const modal = document.getElementById('edit-project-modal');
