@@ -25,7 +25,7 @@ export class Store {
         defaultProject.id = 1;
         defaultProject.tasks = [
             new Task('Get a haircut', 'Mullets are out of fashion!', 'high', '2026-01-31T00:00:00.000Z'),
-            new Task('Go Shopping', 'pick up provisions for part on the weekend!', 'medium', '2026-02-07T00:00:00.000Z'),            
+            new Task('Go Shopping', 'pick up provisions for party on the weekend!', 'medium', '2026-02-07T00:00:00.000Z'),            
         ]
         return [defaultProject];
     }
